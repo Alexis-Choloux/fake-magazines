@@ -19,6 +19,7 @@ CSS/HTML DIRECTORY
     1. GENERAL
     2. HEADER
     3. PART ONE
+      -media queries
     4. PART TWO
 ===================*/
 
@@ -64,4 +65,16 @@ p {
     margin-top: 90px;
     font-size: 18px;
     text-align: center;
+}
+
+/* media queries */
+@media screen and (max-width:400px) {
+    #partOne h1 {
+        font-size: 45px;
+    }
+}
+@media screen and (max-width:700px) {
+    #partOne p {
+        width: 90vw;
+    }
 }

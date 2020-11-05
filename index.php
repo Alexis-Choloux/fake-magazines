@@ -53,6 +53,22 @@
 
     </section>
 
+
+    <!-- PART TWO -->
+    <section>
+      <div class="container">
+        <div class="row">
+
+          <?php
+          $listeArticles = getArticle();
+          showArticles($listeArticles);
+          ?>
+
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
 </body>
