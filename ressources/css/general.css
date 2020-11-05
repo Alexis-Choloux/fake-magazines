@@ -1,0 +1,67 @@
+/* DOCUMENT INFORMATION
+    Name: Fake Magazines
+    Version: 1.0.0
+    Author: Alexis Choloux
+    Date: 05/11/20
+
+FONTS
+    h1= 'Playfair Display', serif;
+    h2 - h6=(bold) 'PT Sans', sans-serif;
+    p= 'PT Sans', sans-serif;
+
+COLORS
+    -Primary= #D9BF3D
+    -Secondary= #818C83
+    -Tertiary= #D9A441
+    -Special= #bf3434
+
+CSS/HTML DIRECTORY
+    1. GENERAL
+    2. HEADER
+    3. PART ONE
+    4. PART TWO
+===================*/
+
+/* GENERAL
+================== */
+h1 {
+    font-family: 'Playfair Display', serif;
+} 
+h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans', sans-serif;
+}
+p {
+    font-family: 'PT Sans', sans-serif;
+} 
+
+/* PART ONE
+================== */
+#partOne {
+    height: 550px;
+    background-image: url(../images/fake-magazines-main.jpg);
+    background-size: cover;
+    color: white;
+}
+
+#partOne h1 {
+    margin: 200px 0 30px 0;
+    font-size: 53px;
+}
+
+#partOne h2 {
+    font-size: 25px;
+    color: #e7bd6d;
+}
+
+#partOne h3 {
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.904);
+}
+
+#partOne p {
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.411);
+    margin-top: 90px;
+    font-size: 18px;
+    text-align: center;
+}

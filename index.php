@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,8 +14,12 @@
   <?php include('functions.php') ?>
 
   <!-- STYLES -->
+  <!-- css -->
+  <link rel="stylesheet" href="ressources/css/general.css">
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- fonts family -->
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <!-- fontawesome -->
   <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all" rel="stylesheet">
   <link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
@@ -29,7 +35,25 @@
   include('header.php')
   ?>
 
-  
+  <main>
+
+    <!-- PART ONE -->
+    <section id="partOne">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Fake Magazines</h1>
+            <h2 class="mb-4">Les meilleurs Fake Magazines,<br>pour de parfaites Fake News</h2>
+            <h3>Restez désinformez !</h3>
+            <p>Séléctionnez votre abonnement dans notre boutique en ligne, ci-dessous</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
 
 </body>
 
