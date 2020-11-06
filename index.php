@@ -1,4 +1,21 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+include('functions.php');
+
+// création panier si inéxistant
+if (!isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array();
+}
+
+$listeArticles = getArticle();
+
+if (isset($_POST['idChoosingArticle'])) {
+  $id = $_POST['idChoosingArticle'];
+  $article = getArticleFromId($listeArticles, $id);
+  ajoutPanier($article, $id);
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,9 +26,6 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width-device, initial-scale=1.0, maximum-scale=1.0">
-
-  <!-- PHP FUNCTIONS -->
-  <?php include('functions.php') ?>
 
   <!-- STYLES -->
   <!-- css -->
@@ -60,7 +74,6 @@
         <div class="row">
 
           <?php
-          $listeArticles = getArticle();
           showArticles($listeArticles);
           ?>
 
