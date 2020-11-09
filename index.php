@@ -1,10 +1,10 @@
-<?php session_start(); 
+<?php session_start();
 
 include('functions.php');
 
 // création panier si inéxistant
 if (!isset($_SESSION['panier'])) {
-    $_SESSION['panier'] = array();
+  $_SESSION['panier'] = array();
 }
 
 $listeArticles = getArticle();
@@ -13,6 +13,10 @@ if (isset($_POST['idChoosingArticle'])) {
   $id = $_POST['idChoosingArticle'];
   $article = getArticleFromId($listeArticles, $id);
   ajoutPanier($article, $id);
+}
+
+if (isset($_POST['emptyCart'])) {
+  emptyCart();
 }
 
 ?>
@@ -57,10 +61,8 @@ if (isset($_POST['idChoosingArticle'])) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h1>Fake Magazines</h1>
-            <h2 class="mb-4">Les meilleurs Fake Magazines,<br>pour de parfaites Fake News</h2>
-            <h3>Restez désinformez !</h3>
-            <p>Séléctionnez votre abonnement dans notre boutique en ligne, ci-dessous</p>
+            <h1 class="mb-4">Les meilleurs Fake Magazines,<br>pour de parfaites Fake News</h1>
+            <h2>Restez désinformez !</h2>
           </div>
         </div>
       </div>
@@ -69,8 +71,15 @@ if (isset($_POST['idChoosingArticle'])) {
 
 
     <!-- PART TWO -->
-    <section>
+    <section id="partTwo">
       <div class="container">
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p id="select">Séléctionnez votre abonnement dans notre boutique en ligne</p>
+          </div>
+        </div>
+
         <div class="row">
 
           <?php
@@ -83,6 +92,10 @@ if (isset($_POST['idChoosingArticle'])) {
     </section>
 
   </main>
+
+  <?php
+  include('footer.php')
+  ?>
 
 </body>
 

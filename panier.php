@@ -6,8 +6,20 @@ if (isset($_POST['modifiedArticleId'])) {
     changeQuantity();
 }
 
-if (isset($_POST['delete'])) {
-    deleteArticle();
+$listeArticles = getArticle();
+
+if (isset($_POST['idChoosingArticle'])) {
+    $id = $_POST['idChoosingArticle'];
+    $article = getArticleFromId($listeArticles, $id);
+    ajoutPanier($article, $id);
+}
+
+if (isset($_POST['deleteArticleId'])) {
+    deleteArticle($_POST['deleteArticleId']);
+}
+
+if (isset($_POST['emptyCart'])) {
+    emptyCart();
 }
 ?>
 
@@ -17,7 +29,7 @@ if (isset($_POST['delete'])) {
 
 <head>
 
-    <title>Fake Magazines</title>
+    <title>Panier - Fake Magazines</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width-device, initial-scale=1.0, maximum-scale=1.0">
@@ -48,8 +60,8 @@ if (isset($_POST['delete'])) {
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center mt-5 mb-5">
-                    <?php 
+                <div class="col-md-12 text-center mt-2 mb-1">
+                    <?php
                     echo "<p>Votre panier contient " . numberArticle() . " articles !</p>"
                     ?>
                 </div>
@@ -58,13 +70,41 @@ if (isset($_POST['delete'])) {
 
     </section>
 
-    <section>
+    <section id="panier">
+
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center mb-4">
+
+                <a href="./confirmation.php">
+                    <button type="button">Passer commande</button>
+                </a>
+
+
+                <form method="post" action="panier.php">
+                    <input type="hidden" name="emptyCart" value="true">
+                    <input type="submit" value="Vider le panier">
+                </form>
+
+            </div>
+        </div>
+
         <div class="container-fluid" id="content">
             <div class="row">
-                <?php
-                showCart();
-                ?>
+                <div class="col-md-12 d-flex">
+                    <?php
+                    showCart();
+                    ?>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Total :
+                        <?php echo totalCart() . " €" ?>
+                    </p>
+                </div>
+            </div>
+
         </div>
     </section>
 
