@@ -9,7 +9,7 @@ if (!isset($_SESSION['panier'])) {
 if (isset($_POST['detailsProductId'])) {
     $id = $_POST['detailsProductId'];
     $listeArticles = getArticle();
-    $article = getArticleFromId ($listeArticles, $id);
+    $article = getArticleFromId($listeArticles, $id);
 }
 
 ?>
@@ -57,11 +57,17 @@ if (isset($_POST['detailsProductId'])) {
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="detail">
                 <?php
                 showArticle($article);
                 ?>
             </div>
+
+            <?php
+            include('footer.php')
+            ?>
+
+
 </body>
 
 <!-- BOOTSTRAP -->

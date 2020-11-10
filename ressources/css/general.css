@@ -37,28 +37,63 @@ p {
 
 input {
     padding-bottom: 5px;
-    border: none;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .inputOne {
     background-color: #bf3434;
+    border: solid #bf3434 1px;
+    border-radius: 20px;
     color: white;
 }
 .inputOne:hover {
-    scale: 1.2;
+    background-color: white;
+    color: #bf3434;
+    border: solid #bf3434 1px;
     transition: 1s;
 }
 
 .inputTwo {
     margin: 5px 0 50px 0;
     background-color: #D9BF3D;
+    border: solid #D9BF3D 1px;
+    border-radius: 20px;
     color: white;
 }
 .inputTwo:hover {
+    background-color: white;
+    border: solid white 1px;
+    color: #818C83;
+    font-weight: bold;
+    transition: 1s;
+}
+
+.orderBtn {
+    padding-bottom: 5px;
+    margin-right: 15px;
+    border: none;
+    background-color: #d63939;
+    color: white;
+    border-radius: 10px;
+}
+.orderBtn:hover {
     scale: 1.2;
     transition: 1s;
 }
+
+.emptyBtn {
+    background-color: #818C83;
+    border: none;
+    border-radius: 20px;
+    color: white;
+}
+.emptyBtn:hover {
+    background-color: white;
+    color: #616963;
+    transition: 1s;
+}
+
+
 
 /* PART ONE
 ================== */
@@ -101,6 +136,49 @@ input {
     font-size: 18px;
     color: white;
 }
+
+
+/* PANIER
+============================= */
+#total {
+    margin-top: -35px;
+    font-size: 40px;
+}
+
+
+/* CONFIRMATION
+=========================== */
+#confirm .col-md-2 img {
+    height: 200px;
+}
+
+#confirm .inputOne {
+    font-size: 13px;
+}
+
+#confirm .inputTwo {
+    font-size: 13px;
+}
+
+#confirmBtn {
+    margin-bottom: 50px;
+}
+
+#return {
+    color: white;
+}
+
+#confirm {
+    margin-bottom: 50px;
+}
+
+
+/* DETAILS PRODUITS
+============================ */
+#detail {
+    margin-bottom: 50px;
+}
+
 
 
 /* FOOTER

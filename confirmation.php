@@ -2,7 +2,7 @@
 
 include('functions.php');
 
-if (isset($_POST ['emptyCart'])) {
+if (isset($_POST['emptyCart'])) {
     emptyCart();
 }
 
@@ -41,7 +41,7 @@ if (isset($_POST ['emptyCart'])) {
     include('header.php')
     ?>
 
-    <section>
+    <section id="confirm">
 
         <div class="container-fluid text-center" id="content">
 
@@ -52,7 +52,7 @@ if (isset($_POST ['emptyCart'])) {
             </div>
 
             <div class="row">
-                <div class="col-md-12 d-flex">
+                <div class="col-md-12 d-flex flex-column align-items-center" id="confirm">
                     <?php
                     showCart();
                     ?>
@@ -75,7 +75,7 @@ if (isset($_POST ['emptyCart'])) {
                     </p>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop" id="confirmBtn">
                         Confirmer
                     </button>
 
@@ -94,16 +94,16 @@ if (isset($_POST ['emptyCart'])) {
 
                                 <div class="modal-body">
                                     <?php echo
-                                        "Votre commande, d'un montant de " . totalPurchase() . "€ , a bien été prise en compte.<br>
-                                    Date de réception estimée : " . date('d-m-Y', strtotime(date('d-m-Y') . ' + 3 days')) . "<br>
-                                    Merci pour votre confiance !";
+                                        "<p>Votre commande, d'un montant de <b>" . totalPurchase() . " €</b>, a bien été prise en compte.</p>
+                                    <p>Date de réception estimée : <b>" . date('d-m-Y', strtotime(date('d-m-Y') . ' + 3 days')) . "</b></p>
+                                    <p>Merci pour votre confiance !</p>";
                                     ?>
                                 </div>
 
                                 <div class="modal-footer">
                                     <form method="post" action="index.php">
                                         <input type="hidden" name="emptyCart" value="true">
-                                        <input type="submit" class="btn-warning" value="Retourner à l'accueil">
+                                        <input type="submit" class="btn-warning" value="Retourner à l'accueil" id="return">
                                     </form>
 
                                 </div>
@@ -113,6 +113,13 @@ if (isset($_POST ['emptyCart'])) {
 
                 </div>
             </div>
+
+            <?php
+            include('footer.php')
+            ?>
+        </div>
+    </section>
+
 </body>
 
 <!-- BOOTSTRAP -->

@@ -76,13 +76,13 @@ if (isset($_POST['emptyCart'])) {
             <div class="col-md-12 d-flex justify-content-center mb-4">
 
                 <a href="./confirmation.php">
-                    <button type="button">Passer commande</button>
+                    <button type="button" class="orderBtn">Confirmer panier</button>
                 </a>
 
 
                 <form method="post" action="panier.php">
                     <input type="hidden" name="emptyCart" value="true">
-                    <input type="submit" value="Vider le panier">
+                    <input type="submit" class="emptyBtn" value="Vider le panier">
                 </form>
 
             </div>
@@ -98,8 +98,8 @@ if (isset($_POST['emptyCart'])) {
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <p>Total :
+                <div class="col-md-12 text-right">
+                    <p id="total">Total :
                         <?php echo totalCart() . " €" ?>
                     </p>
                 </div>
@@ -110,12 +110,9 @@ if (isset($_POST['emptyCart'])) {
 
     <main>
 
-        <section>
-            <div class="container">
-                <div class="row">
-
-                </div>
-            </div>
+        <?php
+        include('footer.php')
+        ?>
 
         </section>
 
