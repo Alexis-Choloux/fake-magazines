@@ -70,12 +70,12 @@ function getArticle()
 function showArticles($listeArticles)
 {
     foreach ($listeArticles as $article) {
-        echo "<div class=\"col-md-4 text-center\">";
-        echo "<form action=\"#ancre\" method=\"post\">";
+        echo "<div class=\"col-xl-4 text-center\">";
+        echo "<form action=\"index.php\" method=\"post\">";
         echo "<img src=\"ressources/images/" . $article["img"] . "\">";
         echo "<h2>" . $article["title"] . "</h2>";
         echo "<p>" . sprintf('%.2f', $article["prix"]) . " €</p>";
-        echo "<input type=\"submit\" class=\"inputOne\" id=\"ancre\" name=\"ajouterPanier\" value=\"Ajouter au panier\">";
+        echo "<input type=\"submit\" class=\"inputOne\" name=\"ajouterPanier\" value=\"Ajouter au panier\">";
         echo "<input type=\"hidden\" name=\"idChoosingArticle\" value=\"" . $article["id"] . "\">";
         echo "</form>";
         echo "<form action=\"details-produits.php\" method=\"post\">";
@@ -91,10 +91,10 @@ function showArticle($article)
 {
     echo "<div class=\"col-md-12 text-center\">";
     echo "<h3>" . $article["title"] . "</h3><br>";
-    echo "<img src=\"ressources/images/" . $article["img"] . "\"> <br>";
-    echo "<p class=\"mt-3\">" . $article["desc"] . "</p><br>";
+    echo "<img src=\"ressources/images/" . $article["img"] . "\" class=\"animate__animated animate__zoomIn\"> <br>";
+    echo "<p class=\"mt-3 animate__animated animate__fadeInDown animate__delay-1s\">" . $article["desc"] . "</p><br>";
     echo "<form action=\"index.php\" method=\"post\">";
-    echo "<input type=\"submit\" class=\"inputOne\" id=\"ancre\" name=\"ajouterPanier\" value=\"Ajouter au panier\">";
+    echo "<input type=\"submit\" class=\"inputOne animate__animated animate__fadeInUp animate__delay-2s\" id=\"ancre\" name=\"ajouterPanier\" value=\"Ajouter au panier\">";
     echo "<input type=\"hidden\" name=\"idChoosingArticle\" value=\"" . $article["id"] . "\">";
     echo "</form>";
     echo "</div>";
@@ -136,17 +136,26 @@ function ajoutPanier($article, $id)
 function showCart()
 {
     foreach ($_SESSION['panier'] as $article) {
-        echo "<div class=\"col-md-2 text-center\">";
-        echo "<img src=\"ressources/images/" . $article["img"] . "\">";
-        echo $article["title"] . "<br>";
-        echo sprintf('%.2f', $article["prix"]) . " €<br>";
+        echo "<div class=\"col-xl-2 text-center\">";
+
+        echo "<img src=\"ressources/images/" . $article["img"] . "\"><br>";
+
+        echo "<p id=\"priceShowCart\">Prix unitaire : " . sprintf('%.2f', $article["prix"]) . " €<br>";
+        echo "<b>Prix total : " . sprintf('%.2f', ($article['prix'] * $article['quantity'])) . " €</b></p>";
+
+        echo "<h4 class=\"displayShowCart\">" . $article["title"] . "</h4>";
+
         echo "<form method=\"post\" action=\"panier.php\">";
-        echo "<p>Quantité : ";
+        echo "<p class=\"displayShowCart\">Qantité : ";
         echo "<input type=\"number\" class=\"text-center\" id=\"quantity\" name=\"newQuantity\" min=\"1\" max=\"5\" value=\"" . $article['quantity'] . "\">";
         echo "</p>";
-        echo "<input type=\"submit\" class=\"inputOne\" value=\"Modifier quantité\">";
+
+        echo "<p class=\"displayConfirm\">Quantité : " . $article['quantity'] . "</p>";
+
+        echo "<input type=\"submit\" class=\"inputOne displayShowCart\" value=\"Modifier quantité\">";
         echo "<input type=\"hidden\" name=\"modifiedArticleId\" value=\"" . $article["id"] . "\">";
         echo "</form>";
+
         echo "<form method=\"post\" action=\"panier.php\">";
         echo "<input type=\"submit\" class=\"inputTwo\" name=\"delete\" value=\"Supprimer\">";
         echo "<input type=\"hidden\" name=\"deleteArticleId\" value=\"" . $article["id"] . "\">";
@@ -187,6 +196,7 @@ function emptyCart()
     $_SESSION['panier'] = array();
 }
 
+
 // prix total panier
 function totalCart()
 {
@@ -194,7 +204,7 @@ function totalCart()
     foreach ($_SESSION['panier'] as $article) {
         $total += $article['prix'] * $article['quantity'];
     }
-    return $total;
+    return sprintf('%.2f', $total);
 }
 
 // frais de port
@@ -207,9 +217,17 @@ function shippingCost()
     return $cost;
 }
 
+function tvaCost () {
+    $cost = 0;
+    foreach ($_SESSION['panier'] as $article) {
+        $cost += $article['prix'] * (5.5 / 100);
+    }
+    return sprintf('%.2f', $cost);
+}
+
 // total à payer
 function totalPurchase()
 {
-    $total = totalCart() + shippingCost();
-    return $total;
+    $total = totalCart() + tvaCost() + shippingCost();
+    return sprintf('%.2f', $total);
 }

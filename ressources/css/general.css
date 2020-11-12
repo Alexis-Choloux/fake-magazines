@@ -21,6 +21,10 @@ CSS/HTML DIRECTORY
     3. PART ONE
       -media queries
     4. PART TWO
+    5. PANIER
+    6. CONFIRMATION
+    7. DETAILS PRODUIS
+    8. FOOTER
 ===================*/
 
 /* GENERAL
@@ -93,6 +97,22 @@ input {
     transition: 1s;
 }
 
+#qteShowCart {
+    font-size : 15px
+}
+
+#priceShowCart {
+    border: 1px grey solid;
+    margin: 10px 0 10px 0;
+}
+
+#panier .displayConfirm {
+    display: none;
+}
+
+#confirm .displayShowCart {
+    display: none;
+}
 
 
 /* PART ONE
@@ -119,7 +139,7 @@ input {
 /* media queries */
 @media screen and (max-width:400px) {
     #partOne h1 {
-        font-size: 45px;
+        font-size: 40px;
     }
 }
 @media screen and (max-width:700px) {
@@ -145,10 +165,23 @@ input {
     font-size: 40px;
 }
 
+/* mediaquerries */
+@media screen and (min-width: 1200px) {
+    #smartphoneBtn {
+        display: none;
+    }
+}
+
 
 /* CONFIRMATION
 =========================== */
-#confirm .col-md-2 img {
+#returnBtn {
+    position: fixed;
+    z-index: 1000;
+    margin: 70px 0 0 300px;
+}
+
+#confirm .col-xl-2 img {
     height: 200px;
 }
 
@@ -161,7 +194,7 @@ input {
 }
 
 #confirmBtn {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 #return {
@@ -170,6 +203,21 @@ input {
 
 #confirm {
     margin-bottom: 50px;
+    border-bottom: solid grey 1px;
+}
+
+#confirm .total {
+    font-size: 25px;
+}
+
+/* media querries */
+@media screen and (max-width: 1199px) {
+    #returnBtn {
+        margin: 5px 0 0 10px;
+    }
+    #confirm h1 {
+        margin-top: 50px;
+    }
 }
 
 

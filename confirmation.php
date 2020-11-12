@@ -31,6 +31,8 @@ if (isset($_POST['emptyCart'])) {
     <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all" rel="stylesheet">
     <link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
     <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all" rel="stylesheet">
+    <!-- animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 
@@ -43,82 +45,94 @@ if (isset($_POST['emptyCart'])) {
 
     <section id="confirm">
 
-        <div class="container-fluid text-center" id="content">
+        <!-- bouton retour -->
+        <div class="row">
+            <div class="col-md-1">
+                <a href="./panier.php" id="returnBtn">
+                    <button type="button" class="orderBtn animate__animated animate__fadeInLeft animate__delay-1s">
+                        < Retour vers le panier </button> </a> </div> </div> 
+                        
+                        <!-- contenu -->
+                            <div class="container-fluid text-center" id="content">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Récapitulatif de commande</h1></br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 d-flex flex-column align-items-center" id="confirm">
-                    <?php
-                    showCart();
-                    ?>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-
-                    <p>Total des achats :
-                        <?php echo totalCart() . " €" ?>
-                    </p>
-
-                    <p>Frais de port :
-                        <?php echo shippingCost() . " €" ?>
-                    </p>
-
-                    <p>TOTAL A PAYER :
-                        <?php echo totalPurchase() . " €" ?>
-                    </p>
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop" id="confirmBtn">
-                        Confirmer
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-
-                                    <h5 class="modal-title" id="staticBackdropLabel">Commande validée !</h5>
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1>Récapitulatif de commande</h1></br>
+                                    </div>
                                 </div>
 
-                                <div class="modal-body">
-                                    <?php echo
-                                        "<p>Votre commande, d'un montant de <b>" . totalPurchase() . " €</b>, a bien été prise en compte.</p>
+                                <div class="row animate__animated animate__backInDown">
+                                    <div class="col-md-12 d-flex flex-column align-items-center" id="confirm">
+                                        <?php
+                                        showCart();
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <p class="total">Total des achats :
+                                            <?php echo totalCart() . " €" ?>
+                                        </p>
+
+                                        <p><i>TVA (5,5%) :
+                                                <?php echo tvaCost() . " €</i>" ?>
+                                        </p>
+
+                                        <p><i>Frais de port :
+                                                <?php echo shippingCost() . " €</i>" ?>
+                                        </p>
+
+                                        <p class="total"><b>TOTAL A PAYER :
+                                                <?php echo totalPurchase() . " €</b>" ?>
+                                        </p>
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop" id="confirmBtn">
+                                            Confirmer
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Commande validée !</h5>
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <?php echo
+                                                            "<p>Votre commande, d'un montant de <b>" . totalPurchase() . " €</b>, a bien été prise en compte.</p>
                                     <p>Date de réception estimée : <b>" . date('d-m-Y', strtotime(date('d-m-Y') . ' + 3 days')) . "</b></p>
                                     <p>Merci pour votre confiance !</p>";
-                                    ?>
-                                </div>
+                                                        ?>
+                                                    </div>
 
-                                <div class="modal-footer">
-                                    <form method="post" action="index.php">
-                                        <input type="hidden" name="emptyCart" value="true">
-                                        <input type="submit" class="btn-warning" value="Retourner à l'accueil" id="return">
-                                    </form>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="index.php">
+                                                            <input type="hidden" name="emptyCart" value="true">
+                                                            <input type="submit" class="btn-warning" value="Retourner à l'accueil" id="return">
+                                                        </form>
 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <?php
-            include('footer.php')
-            ?>
-        </div>
     </section>
+
+    <?php
+    include('footer.php')
+    ?>
 
 </body>
 

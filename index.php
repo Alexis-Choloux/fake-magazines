@@ -42,6 +42,8 @@ if (isset($_POST['emptyCart'])) {
   <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all" rel="stylesheet">
   <link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
   <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all" rel="stylesheet">
+  <!-- animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 
@@ -61,8 +63,8 @@ if (isset($_POST['emptyCart'])) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h1 class="mb-4">Les meilleurs Fake Magazines,<br>pour de parfaites Fake News</h1>
-            <h2>Restez désinformez !</h2>
+            <h1 class="mb-4 animate__animated animate__fadeInLeft">Les meilleurs Fake Magazines,<br>pour de parfaites Fake News</h1>
+            <h2 class="animate__animated animate__bounceInLeft animate__delay-1s">Restez désinformez !</h2>
           </div>
         </div>
       </div>
